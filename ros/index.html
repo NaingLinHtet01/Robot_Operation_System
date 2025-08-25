@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Operation System</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon/favicon.ico">
+</head>
+<body>
+    <div class="loading-modal" id="loading-modal">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p id="loading-text">Processing...</p>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="opt-container">
+            <div class="header">
+                <img src="./assets/imgs/robot.png" alt="logo" class="logo">
+                <div class="header-text">
+                    <h1>ROS</h1>
+                    <span>Robot Operation System</span>
+                    <div class="toggle-container">
+                        <span class="toggle-text">Light</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="theme-toggle">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="toggle-text">Dark</span>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="field-item">
+                    <label for="ip">Target IP</label>
+                    <input type="text" name="ip" id="ip" class="text-input" required>
+                </div>
+                <div class="field-item">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" class="text-input" required>
+                </div>
+                <div class="field-item">
+                    <label for="username">Password</label>
+                    <input type="password" name="password" id="password" class="text-input" required>
+                </div>
+                <div class="field-item">
+                    <label for="excelFile">Choose an Excel file</label>
+                    <input type="file" id="excelFile" name="excelFile" accept=".xls,.xlsx" required class="file-input">
+                </div>
+            </div>
+            <div class="btn-area">
+                <button class="btn" id="upload-btn">Upload</button>
+            </div>
+        </div>
+        <div class="chk-cmd-tab" style="display: none;">
+            <div class="chk-header">
+                <h1>Checked Commands!</h1>
+                <h5>OS Type - <span id="target-os-type"></span></h5>
+            </div>
+            <div class="cmd-container">
+                <div class="cmd-header">
+                    <span>ID</span>
+                    <span>Commands</span>
+                    <span>Comment</span>
+                    <span>Valid</span>
+                </div>
+
+            </div>
+            <div class="cmd-bottom-tab">
+                <button id="approval-btn" class="btn hide" disabled="">Approval Code</button>
+                <button id="execute-btn" class="btn">Execute</button>
+            </div>
+        </div>
+        <div class="cmd-result-tab" style="display: none;">
+            <div class="result-tab-header">
+                <h1>Execute Results</h1>
+            </div>
+            <div class="result-container">
+                <div class="results">
+                </div>
+            </div>
+            <div class="result-btn-tab">
+                <button id="download-btn" class="download-btn btn" onclick="downloadResults()">
+                    Download Results
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="verification-modal" class="modal">
+        <div class="modal-content">
+            <h3>Sensitive Commands Detected</h3>
+            <p>Verification required from supervisor to execute sensitive commands.</p>
+            <p>Please enter the verification code provided by your supervisor:</p>
+            <input type="text" id="verification-code" placeholder="Enter verification code">
+            <div class="modal-buttons">
+                <button class="btn" id="verify-btn">Verify</button>
+                <button class="btn" id="cancel-verify">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./assets/xlsx.js"></script>
+    <script src="./script/script.js"></script>
+</body>
+</html>
